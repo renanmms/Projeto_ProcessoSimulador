@@ -1,5 +1,12 @@
 class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world! ");
+    // Instanciando tanques
+    TOleo t1 = new TOleo(300);
+    TBiodiesel t2 = new TBiodiesel(300);
+
+    
+    Simulador processo_biodisiel = new Simulador(t1, t2);
+//    processo_biodisiel.ligar();
+    
   }
 }
