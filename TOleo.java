@@ -9,4 +9,9 @@ class TOleo extends Tanque {
     {
         volume += litros;
     }
+
+    public void run(){
+        abastecerOleo(Math.random() + 1);
+        System.out.printf("Tanque de Oleo\n %6.2f L", getVolume());
+    }
 }

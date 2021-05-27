@@ -1,4 +1,4 @@
-class Tanque
+class Tanque extends Thread
 {
     protected double capacidade;
     protected double volume;
@@ -17,6 +17,11 @@ class Tanque
     public void setVolume(double volume)
     {
         this.volume = volume;
+    }
+
+    public double getVolume()
+    {
+        return volume;
     }
 
 }

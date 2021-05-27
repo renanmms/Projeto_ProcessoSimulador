@@ -1,4 +1,4 @@
-class Simulador extends Thread
+class Simulador
 {
     // Atributos
     private TOleo t_oleo;
@@ -12,7 +12,7 @@ class Simulador extends Thread
     }
 
     public void ligar(){
-        
+        t_oleo.start(); // qtd que variam de 1 a 2 litros de oleo
     }
 
     // GETTERS/SETTERS
