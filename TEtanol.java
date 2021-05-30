@@ -1,0 +1,4 @@
+class TEtanol extends Tanque
+{
+
+}

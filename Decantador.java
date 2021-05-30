@@ -1,0 +1,4 @@
+class Decantador extends Tanque
+{
+
+}
