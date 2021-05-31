@@ -3,9 +3,9 @@ class Main {
     // Instanciando tanques
     TOleo t1 = new TOleo(0);
     TBiodiesel t2 = new TBiodiesel(300);
-    Reator t3 = new Reator();
+    Reator r = new Reator(t1);
     
-    Simulador processo_biodisiel = new Simulador(t1, t2, t3, t4, t5);
+    Simulador processo_biodisiel = new Simulador(t1, t2, r);
     processo_biodisiel.ligar();
     
     

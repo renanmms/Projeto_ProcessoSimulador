@@ -1,18 +1,24 @@
 class Simulador
 {
+    
     // Atributos
     private TOleo t_oleo;
     private TBiodiesel t_biodiesiel;
-
+    private Reator reator;
+    private int tempo; // TODO Colocar tempo para ser contabilizado
+    
     // Construtor
-    Simulador(TOleo t_oleo, TBiodiesel t_biodiesiel)
+    Simulador(TOleo t_oleo, TBiodiesel t_biodiesiel, Reator reator)
     {
         this.t_oleo = t_oleo;
         this.t_biodiesiel = t_biodiesiel;
+        this.reator = reator;
     }
 
     public void ligar(){
         t_oleo.start(); // qtd que variam de 1 a 2 litros de oleo
+        reator.start();
+
     }
 
     // GETTERS/SETTERS
