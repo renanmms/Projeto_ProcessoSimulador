@@ -5,7 +5,7 @@ class Simulador
     private TOleo t_oleo;
     private TBiodiesel t_biodiesiel;
     private Reator reator;
-    private int tempo; // TODO Colocar tempo para ser contabilizado
+    
     
     // Construtor
     Simulador(TOleo t_oleo, TBiodiesel t_biodiesiel, Reator reator)

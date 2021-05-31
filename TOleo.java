@@ -1,11 +1,9 @@
 class TOleo extends Tanque {
     double volumeAbastecido;
-    //private int tempo;
 
     TOleo(double volume)
     {
         this.volume = volume;
-        //this.tempo = tempo;
     }
     
     
@@ -13,9 +11,7 @@ class TOleo extends Tanque {
         try{
             while(true){
                 volumeAbastecido = abastecerOleo(Math.random() + 1);
-                System.out.println("=================== TANQUE DE OLEO ===================");
-                System.out.printf("OLEO: %.2f L", getVolume());
-                System.out.println("");
+                statusTOleo();
                 Thread.sleep(10000);
             }
         }catch(InterruptedException e){
@@ -23,14 +19,26 @@ class TOleo extends Tanque {
         }
     }
     
-    // TODO precisa zerar o volumeAbastecido quando mandar para o reator
+    // Abastece o tanque de oleo com oleo que variam entre 1 a 2 L
     private double abastecerOleo(double litros)
     {
         volume += litros;
         return litros;
     }
+    
+    // Imprime a qtd de oleo no Tanque de Oleo
+    private void statusTOleo(){
+        System.out.println("=============== TANQUE DE OLEO ===============");
+        System.out.printf("OLEO: %.2f L", getVolume());
+        System.out.println("");
+    }
+    
+    public void esvaziarTOleo(double litros){
+        volume -= litros;
+    }
 
-    public double getVolumeAbastecido(){
+
+    public double getOleoAbastecido(){
         return volumeAbastecido;
     }
 

@@ -11,35 +11,72 @@ class Reator extends Tanque
         litrosSodio = 0;
         litrosEtanol = 0;
         litrosOleo = 0;
+        // Reator processa 5 litros por segundo
+        capacidade = 5;
     }
 
     
     public void Acionar(){
-        litrosOleo += t1.getVolumeAbastecido();
-        // TODO Abastecer o reator com sodio e etanol
-        
+        // TODO Lançar a saída para o Decantador
     }
-
+    
     // Método run onde vai ser rodado a thread
     public void run()
     {
-        // TODO Adicionar a condição para acionar o reator
+        // Contador com a quantidade de ciclos do reator
+        int i = 0;
         try{
-
+            
             while(true){
-                Acionar();
-                System.out.println("=================== REATOR ===================");
-                System.out.printf("EtOH (ETANOL): %.2f L \n", getLitrosEtanol());
-                System.out.printf("OLEO: %.2f L \n", getLitrosOleo());
-                System.out.printf("NaOH (HIDROXIDO DE SODIO): %.2f L \n", getLitrosSodio());
-                Thread.sleep(5000);
+                abastecerReator();
+                
+                verificaVolume(litrosSodio, litrosEtanol, litrosOleo);
+                
+                // Imprime elementos no reator
+                statusReator();
+                
+                i++;
+                System.out.println("Quantidade de ciclos executados: " + i);
+                System.out.println("===========================================");
+                Thread.sleep(1000);
             }
         }catch(InterruptedException e){
             e.printStackTrace();
         }
     }
-
+    
     // GETTERS / SETTERS
+    private void statusReator(){
+        System.out.println("=================== REATOR ===================");
+        System.out.printf("EtOH (ETANOL): %.2f L \n", getLitrosEtanol());
+        System.out.printf("OLEO: %.2f L \n", getLitrosOleo());
+        System.out.printf("NaOH (HIDROXIDO DE SODIO): %.2f L \n", getLitrosSodio());
+        
+    }
+    
+    private void verificaVolume(double litrosSodio, double litrosEtanol, double litrosOleo){
+        // Se o reator atingir 1 parte de NaOH, 1 parte de Oleo e 2 partes de etanol
+        if(litrosSodio >= 1 && litrosEtanol >= 2 && litrosOleo >= 1){
+            // O reator é acionado e lança a saída para o decantador
+            System.out.println("Acionando o Reator");
+            Acionar();
+        }
+    }
+    
+    // TODO Abastecer o reator com sodio e etanol
+    private void abastecerReator(){
+        litrosOleo += t1.getOleoAbastecido(); 
+        // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
+        //t1.esvaziarTOleo(t1.getOleoAbastecido()); 
+
+        //litrosEtanol += t2.getEtanolAbastecido();
+        //litrosSodio += t2.getSodioAbastecido();
+        
+        volume = litrosEtanol + litrosSodio + litrosOleo;
+        System.out.printf("Volume Total: %.2f \n", volume);
+    }
+
+
     public void setLitrosSodio(double _litrosSodio)
     {   
         litrosSodio = _litrosSodio;
