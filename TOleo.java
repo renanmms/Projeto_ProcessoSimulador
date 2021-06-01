@@ -13,7 +13,7 @@ class TOleo extends Tanque {
             while(true){
                 volumeAbastecido = abastecerOleo(Math.random() + 1);
                 statusTOleo();
-                Thread.sleep(10000);
+                Thread.sleep(10000); // TODO Verificar o tempo
             }
         }catch(InterruptedException e){
             e.printStackTrace();
@@ -29,9 +29,7 @@ class TOleo extends Tanque {
     
     // Imprime a qtd de oleo no Tanque de Oleo
     private void statusTOleo(){
-        System.out.println("=============== TANQUE DE OLEO ===============");
-        System.out.printf("OLEO: %.2f L", getVolume());
-        System.out.println("");
+        System.out.printf("=============== TANQUE DE OLEO ===============\nOLEO: %.2f L\n", getVolume());
         
     }
     

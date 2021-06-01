@@ -43,11 +43,8 @@ class TEtNa extends Tanque
     }
     
     // Imprime a qtd de oleo no Tanque de Oleo
-    private void statusEtNa(){
-        System.out.println("=============== TANQUE DE ETANOL E SODIO ===============");
-        System.out.printf("Etanol: %.2f L", getVolumeEtanol());
-        System.out.println("");
-        System.out.printf("Sodio: %.2f L", getVolumeSodio());
+    private void statusTEtNa(){
+        System.out.printf("=============== TANQUE DE ETANOL E SODIO ===============\nEtanol: %.2f L\nSodio: %.2f L\n", getVolumeEtanol(), getVolumeSodio());
     }
     
     public void esvaziarTEtNa(double litros){
@@ -55,9 +52,13 @@ class TEtNa extends Tanque
     }
 
 
-    //public double getOleoAbastecido(){
-    //    return volumeAbastecido;
-    //}
+    public double getEtanolAbastecido(){
+       return volumeAbastecidoEtanol;
+    }
+
+    public double getSodioAbastecido(){
+        return volumeAbastecidoSodio;
+    }
 
     public double getVolume(){
         return volume;

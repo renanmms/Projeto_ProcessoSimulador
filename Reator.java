@@ -1,13 +1,15 @@
 class Reator extends Tanque
 {
     TOleo t1;
+    TEtNa t2;
 
     protected double litrosSodio;//1,25l
     protected double litrosEtanol;//2,50l
     protected double litrosOleo;//1,25l
 
-    Reator(TOleo t1){
+    Reator(TOleo t1, TEtNa t2){
         this.t1 = t1;
+        this.t2 = t2;
         litrosSodio = 0;
         litrosEtanol = 0;
         litrosOleo = 0;
@@ -36,7 +38,7 @@ class Reator extends Tanque
                 statusReator();
                 
                 i++;
-                System.out.println("Quantidade de ciclos executados: " + i);
+                System.out.println("\nQuantidade de ciclos executados: " + i);
                 System.out.println("===========================================");
                 Thread.sleep(1000);
             }
@@ -47,10 +49,7 @@ class Reator extends Tanque
     
     // GETTERS / SETTERS
     private void statusReator(){
-        System.out.println("=================== REATOR ===================");
-        System.out.printf("EtOH (ETANOL): %.2f L \n", getLitrosEtanol());
-        System.out.printf("OLEO: %.2f L \n", getLitrosOleo());
-        System.out.printf("NaOH (HIDROXIDO DE SODIO): %.2f L \n", getLitrosSodio());
+        System.out.printf("=================== REATOR ===================\nEtOH (ETANOL): %.2f L \nOLEO: %.2f L \nNaOH (HIDROXIDO DE SODIO): %.2f L \n", getLitrosEtanol(), getLitrosOleo(),getLitrosSodio());
         
     }
     
@@ -65,19 +64,26 @@ class Reator extends Tanque
     
     // TODO Abastecer o reator com sodio e etanol
     private void abastecerReator(){
-        litrosOleo += t1.getOleoAbastecido(); 
-        //litrosEtanol += t2.getEtanolAbastecido();
-        //litrosSodio += t2.getSodioAbastecido();
-        // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
-        if(t1.getVolume() >= 0)
-        {
-            System.out.printf("\nTanque de Oleo: %.2f\n", getVolume());
-            t1.esvaziarTOleo(t1.getOleoAbastecido()); 
-        }
 
-        
-        volume = litrosEtanol + litrosSodio + litrosOleo;
-        System.out.printf("Volume Total: %.2f \n", volume);
+        if(volume >= capacidade){
+            System.out.println("Reator cheio");
+            
+        }else{
+            litrosOleo += t1.getOleoAbastecido(); 
+            litrosEtanol += t2.getEtanolAbastecido();
+            litrosSodio += t2.getSodioAbastecido();
+            // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
+            if(t1.getVolume() >= 0)
+            {
+                System.out.printf("\nTanque de Oleo: %.2f\n", getVolume());
+                t1.esvaziarTOleo(t1.getOleoAbastecido()); 
+                t2.esvaziarTEtNa(t2.getEtanolAbastecido());
+                t2.esvaziarTEtNa(t2.getSodioAbastecido());
+            }
+            
+            volume = litrosEtanol + litrosSodio + litrosOleo;
+        }
+        //System.out.printf("Volume Total: %.2f \n", volume);
     }
 
 

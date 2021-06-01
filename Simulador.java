@@ -5,19 +5,22 @@ class Simulador
     private TOleo t_oleo;
     private TBiodiesel t_biodiesiel;
     private Reator reator;
+    private TEtNa t_etna;
     
     
     // Construtor
-    Simulador(TOleo t_oleo, TBiodiesel t_biodiesiel, Reator reator)
+    Simulador(TOleo t_oleo, TBiodiesel t_biodiesiel, TEtNa t_etna, Reator reator)
     {
         this.t_oleo = t_oleo;
         this.t_biodiesiel = t_biodiesiel;
         this.reator = reator;
+        this.t_etna = t_etna;
     }
 
     public void ligar(){
         t_oleo.start(); // qtd que variam de 1 a 2 litros de oleo
         reator.start();
+        t_etna.start();
 
     }
 
