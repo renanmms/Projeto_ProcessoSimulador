@@ -9,6 +9,7 @@ class TOleo extends Tanque {
     
     public void run(){
         try{
+            System.out.println("TANQUE DE OLEO - status online");
             while(true){
                 volumeAbastecido = abastecerOleo(Math.random() + 1);
                 statusTOleo();
