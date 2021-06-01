@@ -66,11 +66,15 @@ class Reator extends Tanque
     // TODO Abastecer o reator com sodio e etanol
     private void abastecerReator(){
         litrosOleo += t1.getOleoAbastecido(); 
-        // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
-        //t1.esvaziarTOleo(t1.getOleoAbastecido()); 
-
         //litrosEtanol += t2.getEtanolAbastecido();
         //litrosSodio += t2.getSodioAbastecido();
+        // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
+        if(t1.getVolume() >= 0)
+        {
+            System.out.printf("\nTanque de Oleo: %.2f\n", getVolume());
+            t1.esvaziarTOleo(t1.getOleoAbastecido()); 
+        }
+
         
         volume = litrosEtanol + litrosSodio + litrosOleo;
         System.out.printf("Volume Total: %.2f \n", volume);
