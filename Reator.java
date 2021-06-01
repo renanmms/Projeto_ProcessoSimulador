@@ -2,14 +2,16 @@ class Reator extends Tanque
 {
     TOleo t1;
     TEtNa t2;
+    Decantador d;
 
     protected double litrosSodio;//1,25l
     protected double litrosEtanol;//2,50l
     protected double litrosOleo;//1,25l
 
-    Reator(TOleo t1, TEtNa t2){
+    Reator(TOleo t1, TEtNa t2, Decantador d){
         this.t1 = t1;
         this.t2 = t2;
+        this.d = d;
         litrosSodio = 0;
         litrosEtanol = 0;
         litrosOleo = 0;
@@ -20,6 +22,7 @@ class Reator extends Tanque
     
     public void Acionar(){
         // TODO Lançar a saída para o Decantador
+        
     }
     
     // Método run onde vai ser rodado a thread
@@ -75,7 +78,7 @@ class Reator extends Tanque
             // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
             if(t1.getVolume() >= 0)
             {
-                System.out.printf("\nTanque de Oleo: %.2f\n", getVolume());
+                //System.out.printf("\nTanque de Oleo: %.2f\n", getVolume());
                 t1.esvaziarTOleo(t1.getOleoAbastecido()); 
                 t2.esvaziarTEtNa(t2.getEtanolAbastecido());
                 t2.esvaziarTEtNa(t2.getSodioAbastecido());

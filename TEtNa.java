@@ -20,7 +20,7 @@ class TEtNa extends Tanque
                 volumeAbastecidoSodio = abastecerSodio((Math.random())/4);
                 volumeAbastecidoEtanol = abastecerEtanol((Math.random())/8);
                 statusTEtNa();
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             }
         }catch(InterruptedException e){
             e.printStackTrace();

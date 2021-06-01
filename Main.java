@@ -5,10 +5,11 @@ class Main {
     TOleo t_oleo = new TOleo(0);
     TEtNa t_etna = new TEtNa(0);
     TBiodiesel t_biodiesiel = new TBiodiesel(300);
-    Reator r = new Reator(t_oleo, t_etna);
+    Decantador decant = new Decantador();
+    Reator r = new Reator(t_oleo, t_etna, decant);
     
     // Passando os tanques para o construtor do simulador
-    Simulador processo_biodisiel = new Simulador(t_oleo, t_biodiesiel, t_etna, r);
+    Simulador processo_biodisiel = new Simulador(t_oleo, t_biodiesiel, t_etna, r, decant);
     processo_biodisiel.ligar();
     
     
