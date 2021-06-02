@@ -22,7 +22,25 @@ class Reator extends Tanque
     
     public void Acionar(){
         // TODO Lançar a saída para o Decantador
-        
+        System.out.println("Entrou na função Acionar");
+        d.setVolumeEtanol(d.getVolumeEtanol() + litrosEtanol);
+        // esvaziar etanol
+        litrosEtanol = 0;
+
+        d.setVolumeSodio(d.getVolumeSodio() + litrosSodio);
+        // esvaziar sodio
+        litrosSodio = 0;
+
+        d.setVolumeOleo(d.getVolumeOleo() + litrosOleo);
+        // esvaziar oleo
+        litrosOleo = 0;
+        try{
+            Thread.sleep(5000);
+
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
     }
     
     // Método run onde vai ser rodado a thread
@@ -43,7 +61,7 @@ class Reator extends Tanque
                 i++;
                 System.out.println("\nQuantidade de ciclos executados: " + i);
                 System.out.println("===========================================");
-                Thread.sleep(1000);
+                Thread.sleep(100);
             }
         }catch(InterruptedException e){
             e.printStackTrace();
@@ -58,7 +76,8 @@ class Reator extends Tanque
     
     private void verificaVolume(double litrosSodio, double litrosEtanol, double litrosOleo){
         // Se o reator atingir 1 parte de NaOH, 1 parte de Oleo e 2 partes de etanol
-        if(litrosSodio >= 1 && litrosEtanol >= 2 && litrosOleo >= 1){
+        if((litrosSodio >= (volume/4)) && (litrosOleo >= (volume/4)) && (litrosEtanol >= (2*(volume/4)))){
+        //if(litrosSodio >= 1 && litrosEtanol >= 2 && litrosOleo >= 1){
             // O reator é acionado e lança a saída para o decantador
             System.out.println("Acionando o Reator");
             Acionar();
@@ -75,6 +94,7 @@ class Reator extends Tanque
             litrosOleo += t1.getOleoAbastecido(); 
             litrosEtanol += t2.getEtanolAbastecido();
             litrosSodio += t2.getSodioAbastecido();
+            volume += litrosOleo + litrosEtanol + litrosSodio;
             // Após abastecer, deve-se esvaziar o volume abastecido no tanque de oleo
             if(t1.getVolume() >= 0)
             {
