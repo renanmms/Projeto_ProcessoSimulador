@@ -13,7 +13,7 @@ class TOleo extends Tanque {
             while(true){
                 volumeAbastecido = abastecerOleo(Math.random() + 1);
                 statusTOleo();
-                Thread.sleep(100); // TODO Verificar o tempo
+                Thread.sleep(1000); // TODO Verificar o tempo
             }
         }catch(InterruptedException e){
             e.printStackTrace();

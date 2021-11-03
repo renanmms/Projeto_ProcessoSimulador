@@ -22,7 +22,7 @@ class Reator extends Tanque
     
     public void Acionar(){
         // TODO Lançar a saída para o Decantador
-        System.out.println("Entrou na função Acionar");
+        //System.out.println("Entrou na função Acionar");
         d.setVolumeEtanol(d.getVolumeEtanol() + litrosEtanol);
         // esvaziar etanol
         litrosEtanol = 0;
@@ -61,7 +61,7 @@ class Reator extends Tanque
                 i++;
                 System.out.println("\nQuantidade de ciclos executados: " + i);
                 System.out.println("===========================================");
-                Thread.sleep(100);
+                Thread.sleep(1000);
             }
         }catch(InterruptedException e){
             e.printStackTrace();
